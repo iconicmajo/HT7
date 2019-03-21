@@ -30,25 +30,25 @@ public class Nodo {
     public Nodo getParent() {
         return parent;
     }
- 
-    public void setParent(Nodo parent) {
-        this.parent = parent;
+    
+    public Nodo getRight() {
+        return right;
     }
  
     public Nodo getLeft() {
         return left;
+    }
+    public void setParent(Nodo parent) {
+        this.parent = parent;
     }
  
     public void setLeft(Nodo left) {
         this.left = left;
     }
  
-    public Nodo getRight() {
-        return right;
-    }
- 
     public void setRight(Nodo right) {
         this.right = right;
     }
+   
  
 }

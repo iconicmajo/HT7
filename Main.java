@@ -19,6 +19,7 @@ public class Main {
 		
 		
 		Scanner teclado = new Scanner(System.in);
+		BinaryTree tree= null;
 		String english = "";
 		String spanish = "";
 		
@@ -26,33 +27,21 @@ public class Main {
 		System.out.println("***************TRADUCTOR***************");
 		System.out.println("Que desea hacer?");
 		System.out.println("1. Ver diccionario");
-		System.out.println("2. Agregar al diccionario");
-		System.out.println("3. Traducir");
+		System.out.println("2. Traducir");
 		int opcion = teclado.nextInt();
 		teclado.nextLine();
-		
-		//El usuario ingresa la opcion
 	while(opcion!=4) {
 
 		if (opcion == 1) { 
 				System.out.println("Imprimir todo el diccionario: ");
+				System.out.println();
+				//tree.inOrder(tree.raiz);
 		}
 		if(opcion ==2) {
-			System.out.println("Ingrese la palabra en ingles: ");
+			System.out.println("Traducir el documento: ");
             english = teclado.nextLine();
             System.out.println("Ingrese la palabra en espanol: ");
             spanish = teclado.nextLine();
-           /* if(map.containsKey(name)) {
-            	type = map.get(name);
-            	baraja.put(name, type);
-            	System.out.println("Carta agregada correctamente");
-            	}
-            else {
-            	System.out.println("Error");
-            }*/
-		}
-		if(opcion ==3) {
-			System.out.println("Usted ha elegido traducir el documento ");
 		}
 				
 		else {
