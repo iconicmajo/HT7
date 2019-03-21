@@ -6,56 +6,49 @@
  * @author Majo!
  *
  */
-public class Association {
+public class Association<K,V> {
+	private K key;
+	private V value;
+	/**
+	 * @param key
+	 * @param value
+	 */
+	public Association(K key, V value) {
+		this.key = key;
+		this.value = value;
+	}
+	/**
+	 * @return the key
+	 */
+	public K getKey() {
+		return key;
+	}
+	/**
+	 * @param key the key to set
+	 */
+	public void setKey(K key) {
+		this.key = key;
+	}
+	/**
+	 * @return the value
+	 */
+	public V getValue() {
+		return value;
+	}
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(V value) {
+		this.value = value;
+	}
 	
-	private String english;
-	private String spanish;
-	
-	/**
-	 * @param english
-	 * @param spanish
-	 */
-	public Association(String english, String spanish) {
-		this.english = english;
-		this.spanish = spanish;
-	}
-
-	/**
-	 * @return the english
-	 */
-	public String getEnglish() {
-		return english;
-	}
-
-	/**
-	 * @param english the english to set
-	 */
-	public void setEnglish(String english) {
-		this.english = english;
-	}
-
-	/**
-	 * @return the spanish
-	 */
-	public String getSpanish() {
-		return spanish;
-	}
-
-	/**
-	 * @param spanish the spanish to set
-	 */
-	public void setSpanish(String spanish) {
-		this.spanish = spanish;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Association [english=" + english + ", spanish=" + spanish + "]";
+		return "Association [key=" + key + ", value=" + value + "]";
 	}
 	
 	
-
 }
