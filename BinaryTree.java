@@ -7,7 +7,7 @@
  *Clase obtenida de https://serprogramador.es/programar-arboles-binarios-parte-1-introduccionclasesagregar-nodo/
  */
 
-public class BinaryTree {
+public class BinaryTree<E extends Comparable<E>> {
  
     /* Atributos */
     private Nodo raiz;
@@ -21,7 +21,11 @@ public class BinaryTree {
         this.raiz = raiz;
     }
  
-    /* Setters y Getters */
+    public BinaryTree() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/* Setters y Getters */
     public Nodo getRaiz() {
         return raiz;
     }
