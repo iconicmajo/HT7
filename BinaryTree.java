@@ -4,93 +4,89 @@
 
 /**
  * @author Majo!
- *Clase obtenida de https://serprogramador.es/programar-arboles-binarios-parte-1-introduccionclasesagregar-nodo/
+ *Esta clase la obtuve de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+ *Otras cosas son genericas obtenidas del libro JavaStructures
  */
 
-public class BinaryTree<E extends Comparable<E>> {
- 
-    /* Atributos */
-    private Nodo raiz;
- 
-    /* Contructories */    
-    public BinaryTree( int valor ) {
-        this.raiz = new Nodo( valor );
-    }
- 
-    public BinaryTree( Nodo raiz ) {
-        this.raiz = raiz;
-    }
- 
-    public BinaryTree() {
-		// TODO Auto-generated constructor stub
-	}
+public class BinaryTree<E> 
+{
+    private Node root;
+    
 
-	/* Setters y Getters */
-    public Nodo getRaiz() {
-        return raiz;
-    }
- 
-    public void setRaiz(Nodo raiz) {
-        this.raiz = raiz;
-    }
-    private void addNodo( Nodo nodo, Nodo raiz ) {
-        /* 2.- Partiendo de la raíz preguntamos: Nodo == null ( o no existe ) ? */
-        if ( raiz == null ) {
-            this.setRaiz(nodo);
-        }
-        else {
-            if ( nodo.toString().equals(raiz.toString()) ) {
-                if (raiz.getLeft() == null) {
-                    raiz.setLeft(nodo);
-                }
-                else {
-                    addNodo( nodo , raiz.getLeft() );
-                }
-            }
-            else {// if (newNode.toString().compareTo(node.toString()) > 0){
-                if (raiz.getRight() == null) {
-                    raiz.setRight(nodo);
-                }
-                else {
-                    addNodo( nodo, raiz.getRight() );
-                }
-            }
-        }
-    }
- 
-    public void addNodo( Nodo nodo ) {
-        this.addNodo( nodo , this.raiz );
-    }
-    
-    //fRAGMENTO EXTRAIDO DE Geeksforgeeks.com
-    public boolean find(Nodo nodo, String val) {
-    	if(raiz ==null) {
-    		return false;
-    	}
-    		if( nodo.toString().equals(nodo)) {
-    			return true; 
-    		}
-    		else {
-    			if( nodo.toString().equals(nodo)) {
-        			return true; //ver si se modifica esto
-        		}
-    		}
-    		return true;
-    	}
-    
-    //Codigo de https://stackoverflow.com/questions/43825134/binary-tree-in-order-sorting
-    public void inOrder()          
+     // Metodo que llama al BinarySearchTree.
+     
+    public BinaryTree()
+    // post: constructor that generates an empty node
     {
-        inOrder(raiz);
+        root = null;
     }
-    
-    public void inOrder(Nodo nodo)
+   
+     //Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+     
+    public void insert(Node newNode) 
     {
-        if (nodo != null)
+        root = insertRec(root, newNode);
+    }
+     
+ 
+    public Node insertRec(Node root, Node nodo) 
+    {
+ 
+        if (root == null) 
         {
-            inOrder(nodo.getLeft());
-            System.out.println(nodo.getParent());
-            inOrder(nodo.getRight());
+            root = nodo;
+            return root;
+        }
+ 
+   
+        else if ((root.getKey()).compareTo(nodo.getKey()) > 0) //devuelve positivo si el primer string es menor que el segundo
+        {
+            root.setLeft(insertRec(root.getLeft(), nodo)); //al nodo actual, le pone el nodo del argumento como hijo izquierdo
+            root.getLeft().setParent(root); //crea el vinculo padre-hijo entre nodos
+        }
+        else if ((root.getKey().compareTo(nodo.getKey()) < 0))
+        {
+            root.setRight(insertRec(root.getRight(), nodo));//al nodo actual, le pone el nodo del argumento como hijo izquierdo
+            root.getRight().setParent(root); //crea el vinculo padre-hijo entre nodos
+        }
+ 
+        
+      return root;
+    }
+
+     //Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+ 
+    public String search(String dato){
+        
+        if (root == null){
+            return "*" + dato + "*"; 
+        }
+        else{
+            return root.search(dato);
+        }
+
+    }
+
+     // Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+
+    public void inorder()  {
+       inorder(root);
+    }
+
+     //Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+
+    public void inorder(Node root) {
+        if (root != null) {
+            inorder(root.getLeft());
+            System.out.println(root.toString());
+            inorder(root.getRight());
         }
     }
+
+    public Node getRoot() {
+        return root;
+    }
+    
+    
 }
+
